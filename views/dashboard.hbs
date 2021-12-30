@@ -1,0 +1,40 @@
+
+<h1>Welcome {{name}}</h1>
+<h3>Here are your poems</h3>
+
+{{#if poems}}
+    <table class="table table-info table-striped">
+        <thead>
+            <tr>
+                <th>Poem title</th>
+                <th>Date</th>
+                {{!-- <th>Status</th> --}}
+                <th>Edit/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each poems}}
+            <tr>
+                <td><a href="/poems/{{_id}}"></a>{{title}}</td>
+                <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+                {{!-- <td><span class="dash-status">{{status}}</span></td> --}}
+                <td>
+                    <a href="/poems/edit/{{_id}}" class="btn btn-float">
+                    <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="/poems/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn red">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+<p>You have not created any poems</p>
+{{/if}}
+
+{{!-- {{> _add_btn}} --}}
