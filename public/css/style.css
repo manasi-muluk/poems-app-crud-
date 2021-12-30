@@ -151,7 +151,7 @@ p{
 
 .fixed-action-btn{
     font-size: 3rem;
-    position:absolute;
+    position:relative;
     bottom:0;
     right:0;
 }
